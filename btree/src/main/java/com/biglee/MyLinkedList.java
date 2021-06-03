@@ -2,6 +2,11 @@ package main.java.com.biglee;
 
 import com.sun.org.apache.bcel.internal.generic.ARETURN;
 
+/**
+ * https://www.cnblogs.com/byrhuangqiang/p/4311336.html
+ * https://github.com/wangzheng0822/algo
+ * @param <E>
+ */
 public class MyLinkedList <E>{
 
     //哨兵模式，虚拟头结点
