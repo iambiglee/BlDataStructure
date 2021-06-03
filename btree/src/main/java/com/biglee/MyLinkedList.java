@@ -112,30 +112,33 @@ public class MyLinkedList <E>{
         }
         return false;
     }
-    public Node ResverNode(Node head){
-        Node reversedHead=head;
-        Node node=head;
-        Node prev=null;
-        while (node!=null){
-            Node next = node.next;
-            if(next==null) reversedHead=node;
-            node.next=prev;
-            prev=node;
-            node=next;
+/**
+ * 节点立刻反转
+ */
+    public Node reverseLocal(Node head){
+        Node current=head,prev=null;
+        while (current!=null){
+            Node next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
         }
-        head=reversedHead;
-        return head;
+        return prev;
     }
-    public Node reverse(Node head){
-        Node left=null;
-        Node right=null;
-        while (head!=null){
-            right=head.next;
-            head.next=left;
-            left=head;
-            head=right;
+    /**
+     * 新建反转节点
+     */
+    public Node newReverse(Node head){
+        Node dummy=new Node(null);
+        Node current=head;
+        while(current!=null){
+            Node next=current.next;
+            current.next=dummy.next;
+            dummy.next=current;
+            current=next;
         }
-        return left;
+        return dummy.next;
     }
+
 
 }
