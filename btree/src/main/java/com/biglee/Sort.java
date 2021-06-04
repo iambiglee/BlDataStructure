@@ -32,7 +32,7 @@ public class Sort {
         for (int i = 0; i < length; i++) {
             int value=arr[i];
             int j=i-1;
-            for (;j<=0;--j){
+            for (;j>=0;--j){
                 if(arr[j]>value) arr[j+1]=arr[j];
                 else break;
             }
