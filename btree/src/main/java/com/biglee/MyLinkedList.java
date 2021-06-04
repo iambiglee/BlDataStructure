@@ -129,14 +129,21 @@ public class MyLinkedList <E>{
      * 新建反转节点
      */
     public Node newReverse(Node head){
+        //新建一个头节点
         Node dummy=new Node(null);
+        //获取当前节点
         Node current=head;
         while(current!=null){
+            //获取下一个要转的结点
             Node next=current.next;
+            //反转当前操作的链表
             current.next=dummy.next;
+            //拼接第一个current
             dummy.next=current;
+            //开始拼接下一个
             current=next;
         }
+        //结束以后，返回
         return dummy.next;
     }
 
