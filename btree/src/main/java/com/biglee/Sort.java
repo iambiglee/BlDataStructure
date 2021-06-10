@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author ：DELL
  * @date ：Created in 2021/6/4 9:00
- * @description：各个排序算法的汇总
+ * @description：各个排序算法的汇总，tap K 问题
  * @version:
  */
 public class Sort {
@@ -44,9 +44,21 @@ public class Sort {
 
     }
 
+    /**
+     * 递归求和
+     * @param i
+     */
+    public static int sum(int i){
+        if(i<=1){return 1;}
+        else
+            return i+sum(i-1);
+    }
+
     public static void main(String[] args) {
-        int[] testArr={2,1,3,4,5,6,8,7};
+        int[] testArr={2,1,3,9,5,7,8,7};
         insertSort(testArr);
         System.out.println(Arrays.toString(testArr));
+        System.out.println(sum(100));
+
     }
     }
