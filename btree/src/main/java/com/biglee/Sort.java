@@ -11,14 +11,15 @@ import java.util.Arrays;
 public class Sort {
     /**
      * 冒泡排序，稳定性算法,通过n*n次的数字两两交换，完成排序
+     * 依次比较相邻的两个数，将小数放前面，大数放后面。
      */
-    public int[] buddleSort(int[] arr){
+    public static int[] bubbleSort(int[] arr){
         int len=arr.length;
-        for (int i = 0; i < len-1; i++) {
-            for (int j = 0; j < i; j++) {
-                if(arr[j]>arr[i]){
-                int temp=arr[i];
-                arr[i]=arr[j];
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len-i-1; j++) {
+                if(arr[j+1]<arr[j]){
+                int temp=arr[j+1];
+                arr[j+1]=arr[j];
                 arr[j]=temp;
                 }
             }
@@ -27,6 +28,7 @@ public class Sort {
     }
     /**
      * 插入排序，稳定性排序，通过拿出一个数，和之前所有的数对比，进行的排序，大于就插入
+     * 将一个数据插入到已经排好序的有序数组中，从而得到一个新的，个数加1的数组
      */
     public static void insertSort(int[] arr) {
         int length=arr.length;
@@ -34,6 +36,7 @@ public class Sort {
         for (int i = 0; i < length; i++) {
             int value=arr[i];
             int j=i-1;
+            //查找插入的位置
             for (;j>=0;--j){
                 if(arr[j]>value)
                     arr[j+1]=arr[j];
@@ -41,7 +44,23 @@ public class Sort {
             }
             arr[j+1]=value;
         }
+    }
 
+    public static void insertSort2(int[] arr) {
+        int length=arr.length;
+        if(length<=1) return;
+        for (int i = 0; i < length; i++) {
+            int j=i;
+            while (j>0){
+                if(arr[j]<arr[j-1]){
+                    int temp;
+                    temp=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=temp;
+                    j--;
+                }else {break;}
+            }
+        }
     }
 
     /**
@@ -56,9 +75,8 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] testArr={2,1,3,9,5,7,8,7};
-        insertSort(testArr);
+        bubbleSort(testArr);
         System.out.println(Arrays.toString(testArr));
         System.out.println(sum(100));
-
     }
     }
