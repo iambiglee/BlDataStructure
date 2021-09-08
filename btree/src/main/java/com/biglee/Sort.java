@@ -46,20 +46,16 @@ public class Sort {
         }
     }
 
-    public static void insertSort2(int[] arr) {
-        int length=arr.length;
-        if(length<=1) return;
-        for (int i = 0; i < length; i++) {
-            int j=i;
-            while (j>0){
-                if(arr[j]<arr[j-1]){
-                    int temp;
-                    temp=arr[j];
-                    arr[j]=arr[j-1];
-                    arr[j-1]=temp;
-                    j--;
-                }else {break;}
-            }
+    /**
+     * 选择排序
+     * @param arr
+     */
+    public static void selectSort(int[] arr){
+        if(null==arr) return;
+        int len=arr.length;
+        if (len<=1) return;
+        for (int i = 0; i < len-1; ++i) {
+
         }
     }
 
