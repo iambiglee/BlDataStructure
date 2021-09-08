@@ -47,7 +47,7 @@ public class Sort {
     }
 
     /**
-     * 选择排序
+     * 选择排序,最好理解的排序方法，先找到元素中最小的数据，然后放到数组开头，然后找第二小的，依次类推
      * @param arr
      */
     public static void selectSort(int[] arr){
@@ -55,7 +55,15 @@ public class Sort {
         int len=arr.length;
         if (len<=1) return;
         for (int i = 0; i < len-1; ++i) {
-
+            int minIndex=i;
+            for (int j=i+1;j<len;++j){
+                if(arr[j]<arr[minIndex]){
+                    minIndex=j;
+                }
+            }
+            int tmp=arr[i];
+            arr[i]=arr[minIndex];
+            arr[minIndex]=tmp;
         }
     }
 
@@ -71,7 +79,7 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] testArr={2,1,3,9,5,7,8,7};
-        bubbleSort(testArr);
+        selectSort(testArr);
         System.out.println(Arrays.toString(testArr));
         System.out.println(sum(100));
     }
