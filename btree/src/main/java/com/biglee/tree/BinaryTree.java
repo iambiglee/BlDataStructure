@@ -3,6 +3,9 @@ package main.java.com.biglee.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * https://www.cnblogs.com/yandufeng/p/10845118.html
+ */
 public class BinaryTree {
     Node root;
 
@@ -11,9 +14,12 @@ public class BinaryTree {
     }
 
     private Node addNode(Node root, int value) {
-        if(root==null) return new Node(value);
-        if(value<root.data){ root.left=addNode(root.left,value);}
-        else if(value>root.data) {root.right=addNode(root.right,value);}
+        if (root == null) return new Node(value);
+        if (value < root.data) {
+            root.left = addNode(root.left, value);
+        } else if (value > root.data) {
+            root.right = addNode(root.right, value);
+        }
         return root;
     }
 
@@ -50,6 +56,10 @@ public class BinaryTree {
         return root.left==null? root.data : findSmallestValue(root.right);
     }
 
+    /**
+     * 中序遍历，左根右
+     * @param root
+     */
     public void traverLevelOrder(Node root){
         if(root==null){return;}
         Queue<Node> nodes=new LinkedList<>();
@@ -66,6 +76,10 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * 先序遍历，根左右
+     * @param root
+     */
     public void traverPostOrder(Node root){
         if (root!=null){
             System.out.println(root.data);
@@ -74,6 +88,17 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * 后续遍历左右根
+     * @param root
+     */
+    public void traversePostOrder(Node root){
+        if(root!=null){
+            traversePostOrder(root.left);
+            traversePostOrder(root.right);
+            System.out.println(root.data);
+        }
+    }
 
     class Node{
         int data;
