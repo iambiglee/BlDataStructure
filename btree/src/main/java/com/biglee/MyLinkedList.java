@@ -10,11 +10,11 @@ import com.sun.org.apache.bcel.internal.generic.ARETURN;
 public class MyLinkedList <E>{
 
     //哨兵模式，虚拟头结点
-    private Node dummyHead;
+    public Node dummyHead;
     int size;
-    private class Node{
+    public class Node{
         private E e;
-        private Node next;
+        public Node next;
 
         public Node(E e, Node next) {
             this.e = e;
@@ -56,6 +56,10 @@ public class MyLinkedList <E>{
         prev.next=new Node(e,prev.next);
         size++;
     }
+    public void addLast(E e) {
+        add(size, e);
+    }
+
     /**
      * 获得链表index处的元素e
      */
@@ -118,6 +122,7 @@ public class MyLinkedList <E>{
     public Node reverseLocal(Node head){
         Node current=head,prev=null;
         while (current!=null){
+            //先存next 指针
             Node next=current.next;
             current.next=prev;
             prev=current;
@@ -125,6 +130,21 @@ public class MyLinkedList <E>{
         }
         return prev;
     }
+
+    public Node reverse(Node node){
+        Node prev=null;
+        while (node!=null){
+            Node next=node.next;
+            //这里被卡住过两次，这里是直接拿到prev当前的值，prev之后的值
+            node.next=prev;
+            //Prev 之后的值和node已经没有关系了
+            prev=node;
+            node=next;
+        }
+        return prev;
+    }
+
+
     /**
      * 新建反转节点
      */

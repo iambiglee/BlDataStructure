@@ -103,5 +103,12 @@ public class Sort {
         insertSort(testArr);
         System.out.println(Arrays.toString(testArr));
         System.out.println(sum(100));
+        MyLinkedList<Integer> list=new MyLinkedList<>();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addLast(5);
+        list.reverse(list.dummyHead.next);
     }
     }
