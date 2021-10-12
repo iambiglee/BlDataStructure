@@ -1,5 +1,6 @@
 package main.java.com.biglee.tree;
 
+import javax.swing.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -99,6 +100,23 @@ public class BinaryTree {
             System.out.println(root.data);
         }
     }
+
+    /**
+     * 打印二叉树
+     * @param root
+     */
+    public void printTree(Node root){
+        if(root==null) return;
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        Node node=null;
+        while (queue.size()!=0){
+            node=queue.poll();
+            if(node.left!=null) queue.offer(node.left);
+            if(node.right!=null) queue.offer(node.right);
+        }
+    }
+
 
     class Node{
         int data;
