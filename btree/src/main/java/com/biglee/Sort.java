@@ -97,6 +97,38 @@ public class Sort {
         else
             return i+sum(i-1);
     }
+    
+    
+    
+    public static void quickSort(int[] arr, int start,int end){
+        if(start<end){
+            int partition=partition(arr, start,end);
+            quickSort(arr,start,partition);
+            quickSort(arr,partition,end);
+        }
+    }
+
+    /**
+     * 快速排序  https://blog.csdn.net/morewindows/article/details/6684558
+     * @param arr
+     * @param start
+     * @param end
+     * @return
+     */
+    private static int partition(int[] arr, int start, int end) {
+        int left=start,right=end;
+            int pivot=arr[left];
+            while (left<right){
+                //从右向左找小于pivot的数来填充arr[left]
+                while (left<right&&arr[right]>=pivot) right--;
+                if(left<right) {arr[left]=arr[right];left++;};
+                //从左向右查找大于pivot的数来填充arr[right]
+                while (left<right&&arr[left]<pivot) left++;
+                if(left<right) {arr[right]=arr[left];right--;};
+            }
+            arr[right]=pivot;
+            return left;
+    }
 
     public static void main(String[] args) {
         int[] testArr={2,1,3,9,5,7,8,7};
